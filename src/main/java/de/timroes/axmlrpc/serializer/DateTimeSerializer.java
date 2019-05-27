@@ -1,6 +1,8 @@
 package de.timroes.axmlrpc.serializer;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,7 +31,12 @@ public class DateTimeSerializer implements Serializer {
 	public Object deserialize(String dateStr) throws XMLRPCException {
 		try {
 			String value = formatStringIfNeeded(dateStr);
-			return javax.xml.bind.DatatypeConverter.parseDateTime(value).getTime();
+			//return javax.xml.bind.DatatypeConverter.parseDateTime(value).getTime();
+			Locale l = new Locale("en", "US");
+			Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ",l)
+					.parse(value);
+			return date.getTime();
+
 		} catch (Exception ex) {
 			throw new XMLRPCException("Unable to parse given date.", ex);
 		}
