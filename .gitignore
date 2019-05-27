@@ -1,6 +1,7 @@
-nbproject/
-build/
-dist/
-.gradle/
-/.nb-gradle/private/
-src/main/java/.DS_Store
+/nbproject/
+/.idea/*
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
